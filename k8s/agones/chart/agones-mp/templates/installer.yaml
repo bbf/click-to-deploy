@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: agones-installer
+  namespace: {{ .Release.Namespace }}
+  labels:
+    release: "{{ .Release.Name }}"
+    helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+spec:
+  template:
+    spec:
+      serviceAccountName: "{{.Values.marketplace_integration.service_account}}"
+      containers:
+      - name: agones-installer
+        image: {{.Values.marketplace_integration.image}}
+        command: ["/bin/agones-installer.sh"]
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: config-volume
+            mountPath: /data/values
+      restartPolicy: Never
+      volumes:
+        - configMap:
+            name: "{{.Release.Name}}-deployer-config"
+          name: config-volume
+  backoffLimit: 0

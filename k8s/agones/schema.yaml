@@ -13,7 +13,7 @@ properties:
 
   AGONES_CONTROLLER_IMAGE:
     type: string
-    default: $REGISTRY/agones-controller:$TAG
+    default: $REGISTRY:$TAG
     x-google-marketplace:
       type: IMAGE
       image:

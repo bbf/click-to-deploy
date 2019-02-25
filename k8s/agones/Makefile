@@ -15,7 +15,7 @@ $(info ---- TAG_RELEASE = $(TAG_RELEASE))
 # source repo and destination tags for images
 SOURCE_REGISTRY ?= gcr.io/agones-images
 APP_DEPLOYER_IMAGE ?= $(REGISTRY)/agones/deployer:$(TAG)
-AGONES_CONTROLLER_IMAGE ?= $(REGISTRY)/agones/agones-controller:$(TAG)
+AGONES_CONTROLLER_IMAGE ?= $(REGISTRY)/agones:$(TAG)
 AGONES_SDK_IMAGE ?= $(REGISTRY)/agones/agones-sdk:$(TAG)
 AGONES_PING_IMAGE ?= $(REGISTRY)/agones/agones-ping:$(TAG)
 
